@@ -1,5 +1,5 @@
 <template>
-  <div :class="['todo-list justify-content: center', columnStyleClass]">
+  <div :class="['todo-list', columnStyleClass]">
     <!-- Search Bar -->
     <v-col cols="12">
       <v-text-field
@@ -80,7 +80,7 @@ export default {
   margin: 0px 10px;
   border: 1px solid #eee;
   font-family: sans-serif;
-  width: 100%;
+  width: 300px;
 
   &.todo,
   &.in-progress,
