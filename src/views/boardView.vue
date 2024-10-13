@@ -5,47 +5,55 @@
       <v-row>
         <!-- Task Counts Table -->
         <v-col cols="12" md="12">
-          <v-card>
-            <v-card-title>
-              Task Overview
-              <!-- Add Task Button -->
-              <v-spacer></v-spacer>
-              <v-btn color="primary" @click="openDialog" class="add-Task">Add Task</v-btn>
-            </v-card-title>
-            <v-data-table
-              :headers="headers"
-              :items="taskCounts"
-              :disable-pagination="true"
-              class="elevation-1"
-              item-class="stateClass"
-              hide-default-footer
-            >
-              <!-- State Column -->
-              <template v-slot:item[`state`]="{ item }">
-                <span :class="`state-${item.key}`">{{ item.state }}</span>
-              </template>
+          <v-expansion-panels>
+  <v-expansion-panel>
+    <v-expansion-panel-header>
+      <v-card-title>
+        Task Overview
+        <!-- Add Task Button -->
+        <v-spacer></v-spacer>
+        <v-btn color="primary" @click="openDialog" class="add-Task">Add Task</v-btn>
+      </v-card-title>
+    </v-expansion-panel-header>
 
-              <!-- High Priority Column -->
-              <template v-slot:item[`high`]="{ item }">
-                <span class="priority-high">{{ item.high }}</span>
-              </template>
+    <v-expansion-panel-content>
+      <v-data-table
+        :headers="headers"
+        :items="taskCounts"
+        :disable-pagination="true"
+        class="elevation-1"
+        item-class="stateClass"
+        hide-default-footer
+      >
+        <!-- State Column -->
+        <template v-slot:item[`state`]="{ item }">
+          <span :class="`state-${item.key}`">{{ item.state }}</span>
+        </template>
 
-              <!-- Medium Priority Column -->
-              <template v-slot:item[`medium`]="{ item }">
-                <span class="priority-medium">{{ item.medium }}</span>
-              </template>
+        <!-- High Priority Column -->
+        <template v-slot:item[`high`]="{ item }">
+          <span class="priority-high">{{ item.high }}</span>
+        </template>
 
-              <!-- Low Priority Column -->
-              <template v-slot:item[`low`]="{ item }">
-                <span class="priority-low">{{ item.low }}</span>
-              </template>
+        <!-- Medium Priority Column -->
+        <template v-slot:item[`medium`]="{ item }">
+          <span class="priority-medium">{{ item.medium }}</span>
+        </template>
 
-              <!-- Total Column -->
-              <template v-slot:item[`count`]="{ item }">
-                {{ item.count }}
-              </template>
-            </v-data-table>
-          </v-card>
+        <!-- Low Priority Column -->
+        <template v-slot:item[`low`]="{ item }">
+          <span class="priority-low">{{ item.low }}</span>
+        </template>
+
+        <!-- Total Column -->
+        <template v-slot:item[`count`]="{ item }">
+          {{ item.count }}
+        </template>
+      </v-data-table>
+    </v-expansion-panel-content>
+  </v-expansion-panel>
+</v-expansion-panels>
+
         </v-col>
 
         <!-- Task Columns -->
@@ -278,7 +286,7 @@ export default {
   display: flex;
   justify-content: space-between;
   font-family: sans-serif;
-  margin: 50px 0px;
+  margin: 10px 0px;
   gap: 20px;
 }
 
